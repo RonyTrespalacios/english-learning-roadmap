@@ -4,7 +4,7 @@
 
   const CURRICULUM = window.ER_CURRICULUM;
   const RESOURCES = window.ER_RESOURCES || {};
-  const STORAGE_KEY = "er:progress:v1";
+  const STORAGE_KEY = "er:progress:v2";
   const CATEGORIES = [
     { key: "theory", label: "Teoría", icon: "📘" },
     { key: "videos", label: "Videos explicativos", icon: "🎬" },
@@ -36,7 +36,7 @@
   function saveProgress() {
     try { localStorage.setItem(STORAGE_KEY, JSON.stringify(progress)); } catch (e) { /* quota / private mode */ }
   }
-  const resKey = (topicId, res) => topicId + "|" + res.url;
+  const resKey = (topicId, res, cat) => topicId + "|" + (cat || res._cat) + "|" + res.url;
 
   /* ---------------- Data helpers ---------------- */
   const topicsById = {};
@@ -265,20 +265,20 @@
   }
 
   function cardHTML(topicId, r, cat) {
-    const key = resKey(topicId, r);
+    const key = resKey(topicId, r, cat);
     const done = !!progress.done[key];
     const domain = hostOf(r.url);
     const fav = `https://www.google.com/s2/favicons?domain=${encodeURIComponent(domain)}&sz=64`;
     const title = cat === "songs" && r.artist ? `${r.title} — ${r.artist}` : r.title;
     return `
       <article class="card ${done ? "done" : ""}" data-key="${esc(key)}">
-        <a class="card-preview" href="${esc(r.url)}" target="_blank" rel="noopener noreferrer" data-preview="${esc(r.url)}">
-          <div class="ph"><img class="fav" src="${fav}" alt="" loading="lazy"/><span class="dom">${esc(domain)}</span><span class="spinner"></span></div>
+        <a class="card-preview" href="${esc(r.url)}" target="_blank" rel="noopener noreferrer" data-preview="${esc(r.url)}" data-cat="${cat}">
+          <div class="ph"><img class="fav" src="${fav}" alt="" loading="lazy" onerror="this.hidden=true"/><span class="dom">${esc(domain)}</span><span class="spinner"></span></div>
           <img alt="" data-src="${esc(r.url)}"/>
           <button class="refresh" type="button" title="Recargar vista previa" data-refresh>↻</button>
         </a>
         <div class="card-body">
-          <div class="card-source"><img src="${fav}" alt="" loading="lazy"/>${esc(r.source || domain)}</div>
+          <div class="card-source"><img src="${fav}" alt="" loading="lazy" onerror="this.hidden=true"/>${esc(r.source || domain)}</div>
           <a class="card-title" href="${esc(r.url)}" target="_blank" rel="noopener noreferrer">${esc(title)}</a>
           ${r.desc ? `<p class="card-desc">${esc(r.desc)}</p>` : ""}
         </div>
@@ -359,13 +359,11 @@
     try { db.transaction(IDB_STORE, "readwrite").objectStore(IDB_STORE).delete(key); } catch (e) { /* ignore */ }
   }
 
-  function previewSources(url) {
+  // Solo mShots (captura gratuita) o miniatura de YouTube. thum.io sin cuenta devuelve "Forbidden".
+  function previewSource(url) {
     const yt = youtubeId(url);
-    if (yt) return [`https://img.youtube.com/vi/${yt}/hqdefault.jpg`];
-    return [
-      `https://s0.wp.com/mshots/v1/${encodeURIComponent(url)}?w=640&h=400`,
-      `https://image.thum.io/get/width/640/crop/400/noanimate/${url}`,
-    ];
+    return yt ? { src: `https://img.youtube.com/vi/${yt}/hqdefault.jpg`, kind: "yt" }
+              : { src: `https://s0.wp.com/mshots/v1/${encodeURIComponent(url)}?w=640&h=400`, kind: "shot" };
   }
   function youtubeId(url) {
     const m = url.match(/(?:youtube\.com\/watch\?(?:.*&)?v=|youtu\.be\/|youtube\.com\/embed\/)([\w-]{11})/);
@@ -382,59 +380,67 @@
     modalContent.querySelectorAll(".card-preview").forEach((a) => io.observe(a));
   }
 
+  const NEGATIVE_TTL = 3 * 24 * 3600 * 1000; // no reintentar capturas inútiles durante 3 días
+  const RETRY_DELAYS = [6000, 15000, 30000, 60000];
+  const attempts = {};
+
   async function loadPreview(a, force) {
     const url = a.dataset.preview;
     const img = a.querySelector("img[data-src]");
     const ph = a.querySelector(".ph");
     if (!img) return;
-    img.classList.remove("loaded");
-    ph.style.display = "";
-    if (force) await idbDel(url);
+    if (force) { await idbDel(url); delete attempts[url]; img.classList.remove("loaded"); ph.hidden = false; setSpinner(ph, true); }
     else {
       const cached = await idbGet(url);
-      if (cached) { showBlob(img, ph, cached); return; }
+      if (cached instanceof Blob) { showBlob(img, ph, cached); return; }
+      if (cached && cached.none && Date.now() - cached.t < NEGATIVE_TTL) { setSpinner(ph, false); return; }
     }
-    let fallback = null;
-    for (const src of previewSources(url)) {
-      const res = await fetchPreview(src);
-      if (!res) continue;
-      if (res.placeholder) { fallback = fallback || res.blob; continue; }
-      await idbSet(url, res.blob);          // solo se cachea una captura real
-      showBlob(img, ph, res.blob);
-      return;
+    const { src, kind } = previewSource(url);
+    const res = await fetchPreview(src + (attempts[url] ? `&r=${attempts[url]}` : ""), kind);
+    if (res && res.ok) { await idbSet(url, res.blob); showBlob(img, ph, res.blob); return; }
+    if (res && res.pending) {
+      // mShots aún está generando la captura: mantener el placeholder propio y reintentar
+      const n = (attempts[url] = (attempts[url] || 0) + 1);
+      if (n <= RETRY_DELAYS.length) { setTimeout(() => { if (a.isConnected) loadPreview(a, false); }, RETRY_DELAYS[n - 1]); return; }
     }
-    if (fallback) {
-      showBlob(img, ph, fallback);
-      // mShots genera la captura en segundo plano: reintentar más tarde (sin cachear el placeholder)
-      const tries = (retries[url] = (retries[url] || 0) + 1);
-      if (tries <= 3) setTimeout(() => { if (a.isConnected) loadPreview(a, false); }, 8000 * tries);
-      return;
-    }
-    const sp = ph.querySelector(".spinner"); if (sp) sp.remove();
+    // Error, captura vacía ("Access denied", "Forbidden") o sin respuesta: placeholder estático
+    if (!res || res.blank) await idbSet(url, { none: true, t: Date.now() });
+    setSpinner(ph, false);
   }
-  const retries = {};
 
-  // Descarga con CORS y valida que sea una imagen real (no el "Generating preview" de mShots).
-  async function fetchPreview(src) {
+  // Descarga con CORS y clasifica: ok | pending (placeholder de mShots) | blank (página de error casi vacía)
+  async function fetchPreview(src, kind) {
     try {
       const resp = await fetch(src, { mode: "cors" });
       if (!resp.ok) return null;
       const blob = await resp.blob();
       if (!blob.type.startsWith("image/") || blob.size < 1500) return null;
-      let placeholder = false;
-      if (src.includes("mshots") && "createImageBitmap" in window) {
-        try {
-          const bmp = await createImageBitmap(blob);
-          placeholder = bmp.width !== 640; // la captura real mide 640x400; el placeholder 400x300
-          bmp.close && bmp.close();
-        } catch (e) { placeholder = true; }
-      }
-      return { blob, placeholder };
+      if (!("createImageBitmap" in window)) return { ok: true, blob };
+      const bmp = await createImageBitmap(blob);
+      const w = bmp.width;
+      if (kind === "yt" && w <= 120) { bmp.close && bmp.close(); return null; } // miniatura por defecto (video borrado)
+      if (kind === "shot" && w !== 640) { bmp.close && bmp.close(); return { pending: true }; } // "Generating preview" 400x300
+      const blank = whiteRatio(bmp) > 0.9;
+      bmp.close && bmp.close();
+      return blank ? { blank: true } : { ok: true, blob };
     } catch (e) { return null; }
+  }
+  function whiteRatio(bmp) {
+    try {
+      const c = document.createElement("canvas"); c.width = 48; c.height = 30;
+      const ctx = c.getContext("2d"); ctx.drawImage(bmp, 0, 0, 48, 30);
+      const d = ctx.getImageData(0, 0, 48, 30).data; let white = 0;
+      for (let i = 0; i < d.length; i += 4) if (d[i] > 235 && d[i + 1] > 235 && d[i + 2] > 235) white++;
+      return white / (d.length / 4);
+    } catch (e) { return 0; }
+  }
+  function setSpinner(ph, on) {
+    const sp = ph.querySelector(".spinner");
+    if (sp) sp.hidden = !on;
   }
   function showBlob(img, ph, blob) {
     const u = URL.createObjectURL(blob);
-    img.onload = () => { img.classList.add("loaded"); ph.style.display = "none"; };
+    img.onload = () => { img.classList.add("loaded"); ph.hidden = true; };
     img.src = u;
   }
 

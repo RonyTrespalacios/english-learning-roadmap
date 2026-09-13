@@ -29,6 +29,8 @@ const allUrls = new Map();
 for (const t of topics) {
   const r = R[t.id];
   if (!r) { console.log(`MISSING  ${t.id}`); missing++; continue; }
+  const seenUrls = new Set();
+  CATS.forEach((c) => (r[c] || []).forEach((x) => { if (seenUrls.has(x.url + "|" + c)) console.log(`DUPCAT   ${t.id} ${c} ${x.url}`); seenUrls.add(x.url + "|" + c); }));
   const counts = CATS.map((c) => (r[c] || []).length);
   total += counts.reduce((a, b) => a + b, 0);
   const low = CATS.filter((c, i) => counts[i] < MIN[c]);
@@ -36,6 +38,7 @@ for (const t of topics) {
   CATS.forEach((c) => (r[c] || []).forEach((x) => {
     if (!x.url || !/^https?:\/\//.test(x.url)) console.log(`BADURL   ${t.id} ${c} ${x.url}`);
     if (!x.title) console.log(`NOTITLE  ${t.id} ${c} ${x.url}`);
+    if (/youtube\.com\/results\?search_query/.test(x.url)) console.log(`SEARCH   ${t.id} ${c} ${x.url} (usa un video concreto)`);
     if (!allUrls.has(x.url)) allUrls.set(x.url, []);
     allUrls.get(x.url).push(`${t.id}/${c}`);
   }));

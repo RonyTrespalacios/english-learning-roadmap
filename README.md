@@ -24,7 +24,7 @@ python -m http.server 8080
 
 ## Progreso
 
-Se guarda en `localStorage` bajo `er:progress:v1`. Puedes exportarlo/importarlo como JSON desde la cabecera.
+Se guarda en `localStorage` bajo `er:progress:v2`. Puedes exportarlo/importarlo como JSON desde la cabecera.
 
 ## Añadir o corregir recursos
 
