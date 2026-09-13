@@ -1,0 +1,1277 @@
+/* =====================================================================
+   English Roadmap — Currículo
+   Orden analítico-práctico (2026): input comprensible + estructuras
+   reutilizables primero + retrieval espaciado + output temprano.
+   Cada nivel es una "caja grande"; cada cluster agrupa temas (cajas).
+   Los recursos se cargan aparte desde data/resources/*.js por id.
+   ===================================================================== */
+window.ER_CURRICULUM = {
+  levels: [
+    /* ------------------------------------------------------------- */
+    {
+      id: "l0",
+      code: "0",
+      name: "Fundamentos",
+      subtitle: "Método, sonidos y la estructura madre",
+      color: "#111827",
+      intro:
+        "Antes de memorizar listas: aprende CÓMO estudiar, cómo suenan las letras y la única estructura que se repite en casi toda oración en inglés. Con esto, cada tiempo verbal que venga después es solo cambiar el auxiliar.",
+      clusters: [
+        {
+          id: "l0-method",
+          name: "Cómo estudiar en 2026",
+          topics: [
+            {
+              id: "l0-metodo",
+              title: "El método: input + repetición espaciada + output",
+              en: "How to learn English efficiently",
+              type: "method",
+              why: "Primero el sistema, luego el contenido. Los métodos tradicionales repetían reglas sin contexto; hoy la evidencia favorece input comprensible masivo, recuperación espaciada (Anki), shadowing y hablar desde la semana 1.",
+              summary:
+                "Un plan diario realista: 20 min de input (audio/lectura a tu nivel), 10 min de tarjetas Anki, 10 min de output (shadowing o hablar contigo mismo). Aprende chunks (frases completas) en vez de palabras sueltas y mide tu progreso con tests de nivel.",
+              tips: [
+                "Regla 80/20: el 80% del inglés cotidiano usa ~2.000 palabras y ~12 estructuras. Este roadmap las prioriza.",
+                "Cada tema tiene tests: hazlos ANTES de estudiar (para detectar huecos) y DESPUÉS (para consolidar).",
+                "Marca los recursos como hechos: el progreso se guarda en tu navegador.",
+              ],
+            },
+            {
+              id: "l0-nivel",
+              title: "Diagnóstico: ¿en qué nivel estoy?",
+              en: "Placement test",
+              type: "test",
+              why: "Si ya tienes base, no empieces desde A1: haz un test de ubicación y salta al nivel correcto.",
+              summary:
+                "Haz 2 o 3 tests de ubicación diferentes (gramática + comprensión) y toma el nivel más bajo que aparezca. Ese es tu punto de entrada real.",
+              tips: ["Repite el diagnóstico cada 2-3 meses para ver avance."],
+            },
+          ],
+        },
+        {
+          id: "l0-sounds",
+          name: "Sonidos y pronunciación base",
+          topics: [
+            {
+              id: "l0-alfabeto",
+              title: "Alfabeto, spelling y números",
+              en: "Alphabet, spelling & numbers",
+              type: "vocab",
+              why: "Deletrear tu nombre, entender un número de teléfono o un precio es lo primero que necesitas en la vida real.",
+              summary:
+                "Nombres de las letras (A /eɪ/, E /iː/, I /aɪ/), letras confusas (E-I, G-J, A-R), números 1-100, ordinales (1st, 2nd, 3rd), precios y teléfonos.",
+              structure: [
+                { label: "Deletrear", pattern: "How do you spell ...?", examples: ["How do you spell your name? — M-A-R-I-A."] },
+                { label: "Números", pattern: "13 vs 30 (stress)", examples: ["thirTEEN /ˌθɜːˈtiːn/ vs THIRty /ˈθɜːti/"] },
+              ],
+            },
+            {
+              id: "l0-ipa",
+              title: "Sonidos del inglés (IPA) y sonidos difíciles",
+              en: "English sounds & IPA",
+              type: "pronunciation",
+              why: "El inglés NO se pronuncia como se escribe. Aprender los 44 sonidos desde el inicio evita fosilizar errores (ship/sheep, th, r, v/b).",
+              summary:
+                "Vocales cortas vs largas (/ɪ/ vs /iː/), schwa /ə/ (el sonido más común), consonantes que no existen en español: /θ/ think, /ð/ this, /v/ very, /ʃ/ she, /dʒ/ job, /h/ house, la /r/ inglesa.",
+              structure: [
+                { label: "Pares mínimos", pattern: "sonido A vs sonido B", examples: ["ship /ʃɪp/ — sheep /ʃiːp/", "think /θɪŋk/ — sink /sɪŋk/", "very /ˈveri/ — berry /ˈberi/"] },
+              ],
+              tips: ["Usa Youglish para escuchar cualquier palabra en videos reales.", "Graba tu voz y compárala: el shadowing es el ejercicio más eficiente."],
+            },
+          ],
+        },
+        {
+          id: "l0-core",
+          name: "La estructura madre",
+          topics: [
+            {
+              id: "l0-pronombres",
+              title: "Pronombres y posesivos",
+              en: "Subject pronouns, possessives & demonstratives",
+              type: "grammar",
+              why: "Toda oración necesita un sujeto. Sin pronombres no puedes construir nada.",
+              summary:
+                "Sujeto (I, you, he, she, it, we, they), objeto (me, you, him, her, it, us, them), adjetivos posesivos (my, your, his, her, its, our, their), pronombres posesivos (mine, yours...), demostrativos (this/these, that/those).",
+              structure: [
+                { label: "Sujeto", pattern: "Pronombre + verbo", examples: ["She is my sister.", "They live in Bogotá."] },
+                { label: "Objeto", pattern: "verbo + pronombre objeto", examples: ["I love him.", "Call me tomorrow."] },
+                { label: "Posesivo", pattern: "adj. posesivo + sustantivo", examples: ["This is my car.", "That car is mine."] },
+              ],
+            },
+            {
+              id: "l0-tobe",
+              title: "Verbo TO BE (am / is / are)",
+              en: "Verb to be — affirmative, negative, questions",
+              type: "grammar",
+              why: "Es el verbo más frecuente y el único que NO usa auxiliar: él mismo se mueve para negar y preguntar. Dominarlo te da tu primera conversación real.",
+              summary:
+                "Usos: identidad, nacionalidad, profesión, edad, estados, ubicación. Contracciones: I'm, you're, he's, isn't, aren't.",
+              structure: [
+                { label: "Afirmativo", pattern: "S + am/is/are + C", examples: ["I am a student.", "She is from Peru.", "They are tired."] },
+                { label: "Negativo", pattern: "S + am/is/are + NOT + C", examples: ["I'm not a doctor.", "He isn't here.", "We aren't ready."] },
+                { label: "Yes/No question", pattern: "Am/Is/Are + S + C?", examples: ["Are you Colombian? — Yes, I am. / No, I'm not.", "Is she a teacher?"] },
+                { label: "Wh- question", pattern: "Wh- + am/is/are + S?", examples: ["Where are you from?", "What is your name?", "How old is he?"] },
+              ],
+            },
+            {
+              id: "l0-estructura",
+              title: "S + AUX + V + C: la fórmula universal",
+              en: "Sentence structure: Subject + Auxiliary + Verb + Complement",
+              type: "grammar",
+              why: "ESTE es el tema central del roadmap. Casi todos los tiempos verbales siguen el mismo esqueleto; solo cambia el auxiliar (do/does, did, will, have/has, am/is/are, can, would...). Si lo entiendes aquí, los siguientes 30 temas son variaciones.",
+              summary:
+                "Afirmativo: el auxiliar suele estar 'escondido' (I work → do work). Negativo: aparece el auxiliar + not. Pregunta Yes/No: el auxiliar salta al inicio. Pregunta Wh-: la palabra Wh- va antes del auxiliar. Regla de oro: solo UNA palabra lleva la marca de tiempo (el auxiliar); el verbo principal se queda en base, -ing o participio según el tiempo.",
+              structure: [
+                { label: "Afirmativo", pattern: "S + (aux) + V + C", examples: ["I work here.  ( = I DO work here)", "She will call you.", "We have finished."] },
+                { label: "Negativo", pattern: "S + aux + NOT + V + C", examples: ["I do not (don't) work here.", "She will not (won't) call you.", "We have not (haven't) finished."] },
+                { label: "Yes/No question", pattern: "AUX + S + V + C?", examples: ["Do you work here?", "Will she call you?", "Have we finished?"] },
+                { label: "Wh- question", pattern: "WH- + AUX + S + V + C?", examples: ["Where do you work?", "When will she call you?", "What have we finished?"] },
+                { label: "Wh- sujeto", pattern: "WHO/WHAT + V + C? (sin auxiliar)", examples: ["Who works here?", "What happened?"] },
+                { label: "Respuestas cortas", pattern: "Yes, S + aux. / No, S + aux + not.", examples: ["Yes, I do. / No, I don't.", "Yes, she will. / No, she won't."] },
+              ],
+              tips: [
+                "Tabla mental: DO/DOES (presente) · DID (pasado) · WILL (futuro) · HAVE/HAS (perfecto) · AM/IS/ARE (continuo) · CAN/COULD/WOULD/SHOULD (modales).",
+                "Si hay auxiliar visible, el verbo NUNCA lleva -s ni -ed: 'Does she work?' (no 'works').",
+              ],
+            },
+            {
+              id: "l0-wh",
+              title: "Wh- questions: what, where, who, when, why, how",
+              en: "Question words",
+              type: "grammar",
+              why: "Las preguntas son el 50% de una conversación. Con las palabras Wh- + la fórmula anterior puedes preguntar cualquier cosa en cualquier tiempo.",
+              summary:
+                "What (qué), Where (dónde), When (cuándo), Who (quién), Whose (de quién), Why (por qué), Which (cuál), How (cómo), How many/much (cuántos), How often (con qué frecuencia), How long (cuánto tiempo), How far (a qué distancia).",
+              structure: [
+                { label: "Con to be", pattern: "Wh- + be + S?", examples: ["Where is the station?", "How old are you?"] },
+                { label: "Con otros verbos", pattern: "Wh- + do/does + S + V?", examples: ["What do you do?", "Why does she study English?", "How often do they travel?"] },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    /* ------------------------------------------------------------- */
+    {
+      id: "a1",
+      code: "A1",
+      name: "Principiante",
+      subtitle: "Sobrevivir: presente, rutinas, describir tu mundo",
+      color: "#16a34a",
+      intro:
+        "Objetivo A1: presentarte, hablar de tu rutina, describir personas y lugares, entender frases lentas y claras. Todo gira alrededor del presente.",
+      clusters: [
+        {
+          id: "a1-grammar",
+          name: "Gramática del presente",
+          topics: [
+            {
+              id: "a1-present-simple",
+              title: "Presente simple (do / does)",
+              en: "Present Simple",
+              type: "grammar",
+              why: "Hábitos, rutinas, hechos y gustos: es el tiempo que más usarás en tu vida. Introduce el auxiliar DO/DOES y la -s de tercera persona.",
+              summary:
+                "Usos: rutinas (I get up at 7), hechos (Water boils at 100°C), gustos, horarios. Tercera persona: he/she/it + verbo-s (works, goes, watches, studies). Adverbios de frecuencia: always, usually, often, sometimes, rarely, never.",
+              structure: [
+                { label: "Afirmativo", pattern: "S + V(-s) + C", examples: ["I work in an office.", "She works in a hospital."] },
+                { label: "Negativo", pattern: "S + don't/doesn't + V + C", examples: ["I don't eat meat.", "He doesn't like coffee."] },
+                { label: "Yes/No", pattern: "Do/Does + S + V?", examples: ["Do you speak English?", "Does she live here? — Yes, she does."] },
+                { label: "Wh-", pattern: "Wh- + do/does + S + V?", examples: ["What time do you get up?", "Where does he work?"] },
+              ],
+              tips: ["Reglas de la -s: -ss/-sh/-ch/-x/-o → +es (goes, watches); consonante+y → -ies (studies); have → has."],
+            },
+            {
+              id: "a1-articles-plurals",
+              title: "Artículos (a / an / the) y plurales",
+              en: "Articles & plural nouns",
+              type: "grammar",
+              why: "Necesarios para nombrar cualquier cosa. Los hispanohablantes fallan mucho en 'a' vs 'the' y en los plurales irregulares.",
+              summary:
+                "a/an para cosas no específicas y contables singulares (a car, an apple — por SONIDO: an hour, a university). the para algo específico o ya mencionado. Sin artículo para generalizaciones en plural (I like dogs). Plurales: -s, -es, -ies, irregulares (man→men, child→children, foot→feet, mouse→mice, person→people).",
+              structure: [
+                { label: "a / an", pattern: "a + consonante · an + vocal (sonido)", examples: ["a dog, a house, a university", "an egg, an hour, an umbrella"] },
+                { label: "the", pattern: "específico / único", examples: ["The sun is hot.", "I bought a book. The book is great."] },
+              ],
+            },
+            {
+              id: "a1-there-is",
+              title: "There is / There are + some / any",
+              en: "There is/are, some/any",
+              type: "grammar",
+              why: "Describir lugares (tu casa, tu ciudad) y decir qué existe. Introduce some/any que reaparecen en muchos temas.",
+              summary:
+                "There is + singular/incontable; There are + plural. some en afirmativas, any en negativas y preguntas.",
+              structure: [
+                { label: "Afirmativo", pattern: "There is/are + (some) + N", examples: ["There is a park near here.", "There are some apples on the table."] },
+                { label: "Negativo", pattern: "There isn't/aren't + (any) + N", examples: ["There isn't a bank here.", "There aren't any chairs."] },
+                { label: "Pregunta", pattern: "Is/Are there + (any) + N?", examples: ["Is there a hospital? — Yes, there is.", "Are there any students? — No, there aren't."] },
+              ],
+            },
+            {
+              id: "a1-have-got",
+              title: "Have / Have got (posesión)",
+              en: "Have vs have got",
+              type: "grammar",
+              why: "Decir qué tienes: familia, objetos, características físicas. Se usa desde el primer día.",
+              summary:
+                "Have (americano, con do/does) y have got (británico, se comporta como to be). Has para he/she/it.",
+              structure: [
+                { label: "Have (con DO)", pattern: "S + have/has + N · S + don't/doesn't have · Do/Does + S + have?", examples: ["I have two brothers.", "She doesn't have a car.", "Do you have a pen?"] },
+                { label: "Have got", pattern: "S + have/has got · haven't/hasn't got · Have/Has + S + got?", examples: ["I've got blue eyes.", "He hasn't got time.", "Have you got a minute?"] },
+              ],
+            },
+            {
+              id: "a1-can",
+              title: "Can / Can't: habilidad, permiso, peticiones",
+              en: "Modal verb CAN",
+              type: "grammar",
+              why: "Tu primer modal. Los modales son auxiliares 'perfectos': nunca cambian y siguen la fórmula S + AUX + V exactamente.",
+              summary:
+                "Habilidad (I can swim), permiso (Can I go?), peticiones (Can you help me?), posibilidad (It can be cold). Nunca lleva -s ni 'to'.",
+              structure: [
+                { label: "Afirmativo", pattern: "S + can + V", examples: ["She can speak three languages."] },
+                { label: "Negativo", pattern: "S + can't/cannot + V", examples: ["I can't drive."] },
+                { label: "Pregunta", pattern: "Can + S + V?", examples: ["Can you play the guitar? — Yes, I can.", "What can you cook?"] },
+              ],
+            },
+            {
+              id: "a1-present-continuous",
+              title: "Presente continuo (am/is/are + -ing)",
+              en: "Present Continuous & simple vs continuous",
+              type: "grammar",
+              why: "Lo que pasa AHORA o temporalmente. Al ponerlo junto al presente simple aprendes el contraste clave: hábito vs momento.",
+              summary:
+                "Acciones en progreso (I'm studying now), situaciones temporales (She's living in Madrid this year), planes fijos (We're meeting at 8). Reglas del -ing: make→making, run→running, lie→lying. Verbos de estado que no van en -ing: know, like, want, need, believe.",
+              structure: [
+                { label: "Afirmativo", pattern: "S + am/is/are + V-ing", examples: ["I am reading a book.", "They're playing football."] },
+                { label: "Negativo", pattern: "S + am/is/are + not + V-ing", examples: ["She isn't sleeping."] },
+                { label: "Pregunta", pattern: "Am/Is/Are + S + V-ing?", examples: ["Are you listening? — Yes, I am.", "What are you doing?"] },
+                { label: "Contraste", pattern: "simple (siempre) vs continuo (ahora)", examples: ["I usually drink tea, but today I'm drinking coffee."] },
+              ],
+            },
+            {
+              id: "a1-imperatives",
+              title: "Imperativos y Let's",
+              en: "Imperatives, Let's, object pronouns in commands",
+              type: "grammar",
+              why: "Instrucciones, señales, recetas, direcciones. Es la forma más simple del inglés: solo el verbo.",
+              summary: "Verbo base para órdenes (Open the door), Don't + verbo para prohibir, Let's + verbo para sugerir, please para cortesía.",
+              structure: [
+                { label: "Afirmativo", pattern: "V + C", examples: ["Sit down, please.", "Turn left."] },
+                { label: "Negativo", pattern: "Don't + V", examples: ["Don't touch that!"] },
+                { label: "Sugerencia", pattern: "Let's + V", examples: ["Let's go to the cinema."] },
+              ],
+            },
+            {
+              id: "a1-prepositions-place",
+              title: "Preposiciones de lugar: in, on, at, under, behind, next to...",
+              en: "Prepositions of place",
+              type: "grammar",
+              why: "Para describir dónde está algo. Son pocas palabras con altísima frecuencia y se aprenden mejor con imágenes.",
+              summary:
+                "in (dentro: in the box, in Bogotá), on (sobre/superficie: on the table, on the wall), at (punto: at home, at the bus stop), under, above, below, behind, in front of, next to / beside, between, opposite, near, among, inside/outside.",
+              structure: [
+                { label: "in / on / at", pattern: "in = espacio cerrado · on = superficie · at = punto", examples: ["The keys are in the drawer.", "The book is on the desk.", "She is at the door."] },
+                { label: "Otros", pattern: "N + be + prep + N", examples: ["The cat is under the bed.", "The bank is next to the pharmacy.", "The park is between the school and the church."] },
+              ],
+            },
+            {
+              id: "a1-prepositions-time",
+              title: "Preposiciones de tiempo y transporte: in, on, at, by",
+              en: "Prepositions of time (in/on/at) & by bus / on foot",
+              type: "grammar",
+              why: "Quedar con alguien, decir cuándo pasa algo y cómo llegas. Uno de los errores más comunes de hispanohablantes.",
+              summary:
+                "AT + hora/momentos puntuales (at 7 o'clock, at night, at the weekend UK), ON + días/fechas (on Monday, on 5th May, on my birthday), IN + meses/años/partes del día/estaciones (in July, in 2026, in the morning, in winter). Transporte: by bus/car/train/plane/bike, pero ON FOOT y IN my car. Sin preposición con this/next/last/every (next week).",
+              structure: [
+                { label: "at", pattern: "at + hora", examples: ["at 8 o'clock", "at noon", "at midnight", "at Christmas"] },
+                { label: "on", pattern: "on + día / fecha", examples: ["on Friday", "on March 3rd", "on weekdays"] },
+                { label: "in", pattern: "in + mes / año / periodo", examples: ["in May", "in 1999", "in the afternoon", "in the 21st century"] },
+                { label: "by", pattern: "by + medio de transporte", examples: ["I go to work by bus.", "She came by taxi.", "We walked — we went on foot."] },
+              ],
+            },
+            {
+              id: "a1-time",
+              title: "La hora: o'clock, half past, quarter to",
+              en: "Telling the time",
+              type: "vocab",
+              why: "Citas, horarios, transporte. Se combina directamente con at + hora.",
+              summary:
+                "What time is it? / What's the time? — It's 3 o'clock, half past three (3:30), (a) quarter past three (3:15), (a) quarter to four (3:45), ten past five, twenty to six. Formato americano: three fifteen, three thirty. a.m./p.m., noon, midnight.",
+              structure: [
+                { label: "En punto", pattern: "It's + N + o'clock", examples: ["It's seven o'clock."] },
+                { label: "Past (después de)", pattern: "It's + minutos + past + hora", examples: ["It's ten past two (2:10).", "It's half past nine (9:30)."] },
+                { label: "To (para las)", pattern: "It's + minutos + to + hora siguiente", examples: ["It's quarter to five (4:45).", "It's five to twelve (11:55)."] },
+              ],
+            },
+            {
+              id: "a1-adjectives",
+              title: "Adjetivos: posición, orden y sustantivos contables/incontables",
+              en: "Adjectives, countable & uncountable nouns, much/many/a lot of",
+              type: "grammar",
+              why: "Describir personas, cosas y cantidades. Los adjetivos en inglés van ANTES del sustantivo y no tienen plural.",
+              summary:
+                "Adjetivo antes del sustantivo (a big house) o después de be (The house is big). Sin plural (two big houses). Contables (an apple, two apples) vs incontables (water, money, information, advice). How many + contable / How much + incontable. a lot of, a little, a few.",
+              structure: [
+                { label: "Posición", pattern: "adj + N · be + adj", examples: ["She has a red car.", "The car is red."] },
+                { label: "Cantidad", pattern: "many + contable / much + incontable", examples: ["How many friends do you have?", "How much money do you need?", "I don't have much time."] },
+              ],
+            },
+            {
+              id: "a1-like-ing",
+              title: "Like / love / hate + -ing y Would like",
+              en: "Verbs of preference + gerund; would like",
+              type: "grammar",
+              why: "Hablar de gustos es la conversación más natural en A1. 'Would like' te da cortesía para pedir cosas.",
+              summary:
+                "like/love/enjoy/hate + V-ing (I love swimming). Would like + to + V para deseos y pedidos educados (I'd like a coffee / I'd like to go).",
+              structure: [
+                { label: "Gustos", pattern: "S + like/love/hate + V-ing", examples: ["I like reading.", "He hates getting up early.", "Do you like dancing?"] },
+                { label: "Would like", pattern: "S + would like (+ to V / + N)", examples: ["I'd like a sandwich, please.", "Would you like to come? — Yes, I'd love to."] },
+              ],
+            },
+          ],
+        },
+        {
+          id: "a1-vocab",
+          name: "Vocabulario esencial",
+          topics: [
+            {
+              id: "a1-vocab-people",
+              title: "Familia, profesiones y nacionalidades",
+              en: "Family, jobs, countries & nationalities",
+              type: "vocab",
+              why: "Presentarte y hablar de tu gente es lo primero que haces con cualquier persona nueva.",
+              summary:
+                "Family: mother, father, parents, siblings, aunt, uncle, cousin, nephew, niece, grandparents. Jobs: teacher, doctor, nurse, engineer, lawyer, waiter, cook/chef, driver. Countries: Colombia → Colombian, Spain → Spanish, Brazil → Brazilian, France → French. What do you do? — I'm a nurse.",
+            },
+            {
+              id: "a1-vocab-body",
+              title: "Partes del cuerpo, ropa y descripción física",
+              en: "Body parts, clothes & describing people",
+              type: "vocab",
+              why: "Describir personas (tall, short, blue eyes) y hablar de salud básica (My head hurts).",
+              summary:
+                "Body: head, hair, eyes, nose, mouth, ears, neck, shoulders, arms, hands, fingers, legs, knees, feet. Clothes: T-shirt, jeans, dress, jacket, shoes, socks. Description: tall/short, slim/heavy, long/curly/straight hair, beard, glasses. She has got long dark hair.",
+            },
+            {
+              id: "a1-vocab-food",
+              title: "Comida, bebida y en el restaurante",
+              en: "Food, drink & ordering",
+              type: "vocab",
+              why: "Comer es universal y pedir en un restaurante es un diálogo cerrado y predecible ideal para practicar.",
+              summary:
+                "Fruit, vegetables, meat, chicken, fish, rice, bread, cheese, eggs, milk, water, juice. Meals: breakfast, lunch, dinner. Restaurant: menu, bill/check, waiter. I'd like..., Can I have..., How much is it?",
+            },
+            {
+              id: "a1-vocab-home",
+              title: "Casa, ciudad y lugares",
+              en: "House, rooms, furniture, places in town",
+              type: "vocab",
+              why: "Se combina con There is/are y las preposiciones de lugar para describir tu entorno.",
+              summary:
+                "Rooms: kitchen, living room, bedroom, bathroom. Furniture: sofa, table, chair, bed, wardrobe, fridge. Town: bank, supermarket, pharmacy, hospital, station, post office, library, park.",
+            },
+            {
+              id: "a1-vocab-daily",
+              title: "Rutina diaria, días, meses, clima y colores",
+              en: "Daily routine, days, months, seasons, weather, colours",
+              type: "vocab",
+              why: "Vocabulario que alimenta directamente el presente simple y las preposiciones de tiempo.",
+              summary:
+                "Routine: get up, have breakfast, go to work, have lunch, come home, cook dinner, go to bed. Days/months/seasons. Weather: sunny, cloudy, rainy, windy, hot, cold. What's the weather like? — It's raining.",
+            },
+            {
+              id: "a1-vocab-animals-hobbies",
+              title: "Animales, hobbies y deportes",
+              en: "Animals, hobbies, sports & free time",
+              type: "vocab",
+              why: "Tema de conversación fácil y frecuente; se usa con like + -ing y can.",
+              summary: "Animals (dog, cat, horse, bird, fish, cow), sports (play football/tennis, go swimming/running, do yoga), hobbies (read, cook, paint, listen to music, play video games).",
+            },
+          ],
+        },
+        {
+          id: "a1-skills",
+          name: "Habilidades A1",
+          topics: [
+            {
+              id: "a1-conversation",
+              title: "Conversación básica: saludos, presentaciones, small talk",
+              en: "Greetings, introductions & basic dialogues",
+              type: "skills",
+              why: "Output desde el primer día. Diálogos cerrados que puedes memorizar como chunks y usar sin pensar.",
+              summary:
+                "Hello / Hi / Good morning. How are you? — I'm fine, thanks. And you? What's your name? Where are you from? Nice to meet you. See you later. Sorry / Excuse me / Thank you / You're welcome.",
+            },
+            {
+              id: "a1-listening-reading",
+              title: "Listening y lectura graduada A1",
+              en: "Graded listening & reading for beginners",
+              type: "skills",
+              why: "Input comprensible: lo que entiendes al 90% es lo que te hace avanzar. Historias cortas y audios lentos con transcripción.",
+              summary: "Audios lentos con transcripción, noticias en inglés fácil (nivel 1), lectores graduados nivel Starter/Beginner, canciones lentas con letra.",
+            },
+          ],
+        },
+      ],
+    },
+    /* ------------------------------------------------------------- */
+    {
+      id: "a2",
+      code: "A2",
+      name: "Elemental",
+      subtitle: "Contar el pasado, planear el futuro, comparar",
+      color: "#2563eb",
+      intro:
+        "Objetivo A2: narrar lo que hiciste ayer, hablar de planes, comparar cosas, dar consejos y desenvolverte en viajes, compras y salud.",
+      clusters: [
+        {
+          id: "a2-past",
+          name: "El pasado",
+          topics: [
+            {
+              id: "a2-was-were",
+              title: "Pasado de TO BE: was / were",
+              en: "Past simple of be",
+              type: "grammar",
+              why: "Igual que en A1 empezaste con 'be', el pasado empieza con was/were: sin auxiliar, el verbo se mueve solo.",
+              summary: "was (I/he/she/it), were (you/we/they). Expresiones: yesterday, last night, two days ago, in 2010.",
+              structure: [
+                { label: "Afirmativo", pattern: "S + was/were + C", examples: ["I was at home yesterday.", "They were happy."] },
+                { label: "Negativo", pattern: "S + wasn't/weren't + C", examples: ["She wasn't at school."] },
+                { label: "Pregunta", pattern: "Was/Were + S + C?", examples: ["Were you tired? — Yes, I was.", "Where were you born?"] },
+              ],
+            },
+            {
+              id: "a2-past-regular",
+              title: "Pasado simple: verbos regulares (-ed) y su pronunciación",
+              en: "Past simple regular verbs & -ed pronunciation",
+              type: "grammar",
+              why: "La fórmula madre con el auxiliar DID. Y una regla que casi nadie enseña bien: -ed tiene TRES sonidos.",
+              summary:
+                "Afirmativo: verbo + -ed (worked, played, studied, stopped). Negativo y pregunta: DID + verbo base (nunca -ed). Pronunciación de -ed: /t/ tras sonido sordo (worked, stopped, watched), /d/ tras sonoro (played, lived, called), /ɪd/ tras t/d (wanted, needed, decided).",
+              structure: [
+                { label: "Afirmativo", pattern: "S + V-ed + C", examples: ["I worked yesterday.", "She studied all night."] },
+                { label: "Negativo", pattern: "S + didn't + V + C", examples: ["I didn't work yesterday."] },
+                { label: "Pregunta", pattern: "Did + S + V? · Wh- + did + S + V?", examples: ["Did you work? — Yes, I did.", "When did she arrive?"] },
+                { label: "-ed sounds", pattern: "/t/ · /d/ · /ɪd/", examples: ["walked /wɔːkt/", "loved /lʌvd/", "started /ˈstɑːtɪd/"] },
+              ],
+              tips: ["Ortografía: stop→stopped (dobla consonante), study→studied, love→loved, play→played."],
+            },
+            {
+              id: "a2-past-irregular",
+              title: "Pasado simple: verbos irregulares",
+              en: "Irregular verbs (past simple & past participle)",
+              type: "grammar",
+              why: "Los 100 verbos irregulares más frecuentes cubren la mayoría del inglés hablado. Apréndelos en grupos por patrón, con audio y Anki, no en orden alfabético.",
+              summary:
+                "Tres columnas: base – pasado – participio (go–went–gone, see–saw–seen, eat–ate–eaten). Grupos: sin cambio (put-put-put, cut, cost), cambio de vocal (drink-drank-drunk, sing-sang-sung), -ought/-aught (buy-bought, think-thought, teach-taught), etc. El participio lo necesitarás en Present Perfect y pasiva: apréndelo ahora.",
+              structure: [
+                { label: "Afirmativo", pattern: "S + V(pasado irregular)", examples: ["We went to the beach.", "He bought a car."] },
+                { label: "Negativo / Pregunta", pattern: "didn't + base · Did + S + base?", examples: ["We didn't go.", "Did he buy it?"] },
+              ],
+              tips: ["Objetivo: 50 verbos en A2, 100 en B1, 150+ en B2.", "Usa un mazo de Anki con audio; repasa 10 min diarios."],
+            },
+            {
+              id: "a2-past-continuous",
+              title: "Pasado continuo + when / while",
+              en: "Past Continuous",
+              type: "grammar",
+              why: "Para narrar: la acción larga de fondo (pasado continuo) interrumpida por la corta (pasado simple). Base de contar historias.",
+              summary: "was/were + V-ing. 'I was sleeping when the phone rang.' 'While I was cooking, she was reading.'",
+              structure: [
+                { label: "Afirmativo", pattern: "S + was/were + V-ing", examples: ["It was raining at 6."] },
+                { label: "Negativo / Pregunta", pattern: "wasn't/weren't + V-ing · Was/Were + S + V-ing?", examples: ["I wasn't listening.", "What were you doing at 10 pm?"] },
+                { label: "Interrupción", pattern: "Past continuous + when + past simple", examples: ["I was walking home when I saw him."] },
+              ],
+            },
+          ],
+        },
+        {
+          id: "a2-future-more",
+          name: "Futuro, comparación y modales",
+          topics: [
+            {
+              id: "a2-future",
+              title: "Futuro: going to vs will vs presente continuo",
+              en: "Future forms",
+              type: "grammar",
+              why: "Tres formas con matices diferentes: plan (going to), decisión espontánea/predicción (will), cita fija (present continuous).",
+              summary:
+                "going to: planes e intenciones, predicciones con evidencia (Look at the clouds, it's going to rain). will: decisiones en el momento, promesas, predicciones sin evidencia, ofrecimientos. Present continuous: planes con hora/lugar (I'm meeting Ana at 7).",
+              structure: [
+                { label: "will", pattern: "S + will + V · won't · Will + S + V?", examples: ["I'll help you.", "It won't rain.", "Will you come?"] },
+                { label: "going to", pattern: "S + am/is/are going to + V", examples: ["We're going to travel in July.", "Is she going to study?"] },
+                { label: "Present cont.", pattern: "S + am/is/are + V-ing + tiempo", examples: ["I'm flying to Lima tomorrow."] },
+              ],
+            },
+            {
+              id: "a2-comparatives",
+              title: "Comparativos y superlativos",
+              en: "Comparatives, superlatives, as...as",
+              type: "grammar",
+              why: "Comparar es una función comunicativa esencial (precios, ciudades, personas).",
+              summary:
+                "Cortos: -er / the -est (taller, the tallest; big→bigger; happy→happier). Largos: more / the most (more expensive, the most interesting). Irregulares: good→better→best, bad→worse→worst, far→further. than. as...as / not as...as. much/a lot + comparativo.",
+              structure: [
+                { label: "Comparativo", pattern: "S + be + adj-er / more adj + than", examples: ["Bogotá is bigger than Cali.", "This one is more expensive than that one."] },
+                { label: "Superlativo", pattern: "S + be + the adj-est / the most adj", examples: ["She is the tallest in the class.", "It's the most beautiful city."] },
+                { label: "Igualdad", pattern: "as + adj + as", examples: ["He is as tall as his father."] },
+              ],
+            },
+            {
+              id: "a2-modals-obligation",
+              title: "Must / have to / should / mustn't / don't have to",
+              en: "Modals of obligation, prohibition & advice",
+              type: "grammar",
+              why: "Reglas, consejos y obligaciones. Ojo: mustn't (prohibido) ≠ don't have to (no es necesario).",
+              summary:
+                "must (obligación fuerte/personal), have to (obligación externa), should (consejo), mustn't (prohibición), don't have to (no es necesario), can't (no permitido).",
+              structure: [
+                { label: "Obligación", pattern: "S + must/have to + V", examples: ["You must wear a seatbelt.", "I have to work on Saturdays."] },
+                { label: "Consejo", pattern: "S + should/shouldn't + V", examples: ["You should see a doctor."] },
+                { label: "Contraste", pattern: "mustn't vs don't have to", examples: ["You mustn't smoke here. (prohibido)", "You don't have to come. (opcional)"] },
+              ],
+            },
+            {
+              id: "a2-present-perfect",
+              title: "Presente perfecto (have/has + participio)",
+              en: "Present Perfect: ever/never, just/already/yet, for/since",
+              type: "grammar",
+              why: "El tiempo más difícil para hispanohablantes porque conecta pasado con presente. Aquí reutilizas los participios de los verbos irregulares.",
+              summary:
+                "Experiencias (Have you ever been to London?), resultados presentes (I've lost my keys), acciones recientes (just), already/yet, duración hasta ahora (for two years / since 2020). Been vs gone.",
+              structure: [
+                { label: "Afirmativo", pattern: "S + have/has + V3", examples: ["I have visited Mexico.", "She has just left."] },
+                { label: "Negativo", pattern: "S + haven't/hasn't + V3", examples: ["We haven't finished yet."] },
+                { label: "Pregunta", pattern: "Have/Has + S + (ever) + V3?", examples: ["Have you ever eaten sushi? — Yes, I have.", "How long has he lived here?"] },
+                { label: "for / since", pattern: "for + periodo · since + punto", examples: ["for three years", "since 2019 / since Monday"] },
+              ],
+            },
+            {
+              id: "a2-pp-vs-past",
+              title: "Presente perfecto vs pasado simple",
+              en: "Present Perfect vs Past Simple",
+              type: "grammar",
+              why: "El contraste que define si suenas natural: tiempo terminado (yesterday → past simple) vs tiempo no terminado o irrelevante (ever, today, this week → present perfect).",
+              summary:
+                "Pasado simple: momento específico terminado (yesterday, in 2015, last week, ago). Presente perfecto: sin momento concreto, experiencia, o periodo que sigue (today, this month, ever, never, yet, so far).",
+              structure: [
+                { label: "Contraste", pattern: "PP (sin cuándo) vs PS (con cuándo)", examples: ["I have been to Paris. — I went to Paris in 2018.", "She has lost her phone. — She lost her phone yesterday."] },
+              ],
+            },
+          ],
+        },
+        {
+          id: "a2-vocab",
+          name: "Vocabulario y léxico A2",
+          topics: [
+            {
+              id: "a2-quantifiers",
+              title: "Cuantificadores: a few, a little, some, any, no, every, enough",
+              en: "Quantifiers",
+              type: "grammar",
+              why: "Precisión al hablar de cantidad. Amplía lo visto con contables/incontables.",
+              summary: "a few (contable) / a little (incontable), few/little (negativo), some/any, no/none, every/each, enough, too much/too many, plenty of, most, all.",
+              structure: [{ label: "Uso", pattern: "cuantificador + N", examples: ["I have a few friends here.", "There's a little milk left.", "There's too much noise."] }],
+            },
+            {
+              id: "a2-adverbs",
+              title: "Adverbios de modo (-ly), too / enough",
+              en: "Adverbs of manner, degree; too & enough",
+              type: "grammar",
+              why: "Adjetivo describe la cosa; adverbio describe la acción. Muy confundido por hispanohablantes (good vs well).",
+              summary: "adj + -ly (quick→quickly, careful→carefully); irregulares: good→well, fast→fast, hard→hard. too + adj (demasiado), adj + enough (suficiente).",
+              structure: [
+                { label: "Modo", pattern: "V + adv-ly", examples: ["She sings beautifully.", "He drives carefully."] },
+                { label: "too / enough", pattern: "too + adj · adj + enough", examples: ["It's too hot.", "He isn't old enough."] },
+              ],
+            },
+            {
+              id: "a2-phrasal-basic",
+              title: "Phrasal verbs básicos y verbos + preposición",
+              en: "Basic phrasal verbs & dependent prepositions",
+              type: "vocab",
+              why: "El inglés hablado real es phrasal: get up, turn on, look for. Empezar temprano con los 30 más frecuentes evita bloqueos en B1.",
+              summary: "get up, wake up, turn on/off, put on, take off, look for, look after, pick up, give up, find out, go on. Verbos + preposición: listen to, wait for, look at, depend on, think about.",
+            },
+            {
+              id: "a2-connectors",
+              title: "Conectores básicos: and, but, because, so, when, then",
+              en: "Basic linking words",
+              type: "grammar",
+              why: "Pasar de frases sueltas a párrafos y narraciones.",
+              summary: "and (y), but (pero), or (o), because (porque), so (así que), when (cuando), then / after that / finally (secuencia), also, too.",
+              structure: [{ label: "Uso", pattern: "oración + conector + oración", examples: ["I was tired, so I went to bed.", "She stayed home because it was raining."] }],
+            },
+            {
+              id: "a2-vocab-travel",
+              title: "Viajes, direcciones y transporte",
+              en: "Travel, directions & transport",
+              type: "vocab",
+              why: "Escenario clásico A2: aeropuerto, hotel, pedir y dar direcciones.",
+              summary: "airport, flight, ticket, passport, luggage, check-in, hotel, booking. Directions: go straight, turn left/right, next to, opposite, How do I get to...? Excuse me, where is...?",
+            },
+            {
+              id: "a2-vocab-shopping-health",
+              title: "Compras, dinero, salud y cuerpo",
+              en: "Shopping, money, health & illness",
+              type: "vocab",
+              why: "Situaciones de supervivencia: precios, tallas, síntomas, farmacia.",
+              summary: "How much is it? size, try on, cash/card, receipt, discount. Health: I have a headache / a cold / a fever, sore throat, cough, pharmacy, prescription, What's wrong?",
+            },
+            {
+              id: "a2-vocab-work-tech",
+              title: "Trabajo, estudios y tecnología",
+              en: "Work, education & technology",
+              type: "vocab",
+              why: "Hablar de tu día profesional y del mundo digital: ineludible en 2026.",
+              summary: "job, boss, colleague, meeting, office, salary, apply for, CV. Education: course, degree, exam, homework. Tech: laptop, screen, download, upload, app, password, log in, wifi.",
+            },
+          ],
+        },
+        {
+          id: "a2-skills",
+          name: "Habilidades A2",
+          topics: [
+            {
+              id: "a2-pronunciation",
+              title: "Pronunciación: word stress, weak forms y contracciones",
+              en: "Word stress, weak forms, contractions",
+              type: "pronunciation",
+              why: "Entender inglés hablado real depende de reconocer formas débiles: 'Do you want to' suena 'D'ya wanna'.",
+              summary: "Acento de palabra (PHOto, phoTOgrapher), formas débiles de and/to/for/can/have, contracciones (gonna, wanna, I'd, they've).",
+            },
+            {
+              id: "a2-conversation",
+              title: "Diálogos: restaurante, tienda, médico, teléfono",
+              en: "Functional dialogues",
+              type: "skills",
+              why: "Practicar guiones reales completos, con roles.",
+              summary: "Role-plays con vocabulario funcional: pedir comida, quejarse, pedir ayuda, llamadas por teléfono, hacer una reserva.",
+            },
+            {
+              id: "a2-listening-reading",
+              title: "Listening y lectura graduada A2",
+              en: "Graded listening & reading — elementary",
+              type: "skills",
+              why: "Historias con pasado simple: primeros mini-libros (Sherlock Holmes adaptado nivel 1-2), noticias fáciles nivel 2, podcasts para principiantes.",
+              summary: "Lectores graduados nivel 1-2 (Oxford Bookworms, Penguin Readers), noticias en tres niveles, podcasts lentos con transcripción.",
+            },
+          ],
+        },
+      ],
+    },
+    /* ------------------------------------------------------------- */
+    {
+      id: "b1",
+      code: "B1",
+      name: "Intermedio",
+      subtitle: "Independencia: hipótesis, consejos, opiniones y narrar bien",
+      color: "#d97706",
+      intro:
+        "Objetivo B1: mantener conversaciones sobre temas conocidos, contar experiencias con detalle, dar opiniones, entender la idea principal de podcasts y noticias.",
+      clusters: [
+        {
+          id: "b1-tenses",
+          name: "Sistema de tiempos completo",
+          topics: [
+            {
+              id: "b1-present-perfect-continuous",
+              title: "Presente perfecto continuo",
+              en: "Present Perfect Continuous",
+              type: "grammar",
+              why: "Duración de una acción que sigue o acaba de terminar. Completa el bloque 'perfecto'.",
+              summary: "have/has been + V-ing. 'I've been studying English for two years.' 'You look tired — have you been running?' Contraste con el perfecto simple: resultado (I've written 3 emails) vs actividad (I've been writing emails all morning).",
+              structure: [
+                { label: "Afirmativo", pattern: "S + have/has been + V-ing", examples: ["She has been working here since May."] },
+                { label: "Pregunta", pattern: "How long have/has + S + been + V-ing?", examples: ["How long have you been waiting?"] },
+              ],
+            },
+            {
+              id: "b1-past-perfect",
+              title: "Pasado perfecto (had + participio)",
+              en: "Past Perfect & Past Perfect Continuous",
+              type: "grammar",
+              why: "El 'pasado del pasado': esencial para narrar y para el reported speech y el tercer condicional que vienen después.",
+              summary: "had + V3 para la acción anterior a otra en el pasado. 'When I arrived, the film had already started.' Continuo: had been + V-ing.",
+              structure: [
+                { label: "Afirmativo", pattern: "S + had + V3", examples: ["They had left before I called."] },
+                { label: "Negativo / Pregunta", pattern: "hadn't + V3 · Had + S + V3?", examples: ["I hadn't seen that film.", "Had you met him before?"] },
+              ],
+            },
+            {
+              id: "b1-narrative-tenses",
+              title: "Narrar historias: pasado simple + continuo + perfecto",
+              en: "Narrative tenses",
+              type: "grammar",
+              why: "Integración: combinar los tres pasados para contar una anécdota fluida es la habilidad reina de B1.",
+              summary: "Past simple (eventos principales), past continuous (escena de fondo), past perfect (antecedentes). Conectores narrativos: at first, then, suddenly, meanwhile, in the end.",
+              structure: [{ label: "Ejemplo", pattern: "PC (fondo) + PS (evento) + PPerf (antes)", examples: ["It was raining. I was walking home when I realised I had left my keys at the office."] }],
+            },
+            {
+              id: "b1-future-forms",
+              title: "Futuro avanzado: future continuous, future perfect, present simple para horarios",
+              en: "Future forms review + future continuous & perfect",
+              type: "grammar",
+              why: "Cierra el bloque de futuro con formas para 'estar haciendo' y 'haber terminado' en el futuro.",
+              summary: "will be + V-ing (This time tomorrow I'll be flying), will have + V3 (By 2030 I'll have finished), present simple para horarios (The train leaves at 9). Cláusulas de tiempo: when/as soon as/until + presente (When I arrive, I'll call you).",
+              structure: [
+                { label: "Future continuous", pattern: "S + will be + V-ing", examples: ["I'll be working at 8 tonight."] },
+                { label: "Future perfect", pattern: "S + will have + V3", examples: ["She will have graduated by June."] },
+              ],
+            },
+          ],
+        },
+        {
+          id: "b1-modals-cond",
+          name: "Modales y condicionales",
+          topics: [
+            {
+              id: "b1-conditionals-0-1",
+              title: "Condicionales 0 y 1 (if + presente)",
+              en: "Zero & First Conditional",
+              type: "grammar",
+              why: "Hechos generales y consecuencias reales del futuro. La puerta al mundo de las hipótesis.",
+              summary: "Zero: If + present, present (If you heat water, it boils). First: If + present, will + V (If it rains, we'll stay home). También unless, as long as, in case.",
+              structure: [
+                { label: "Zero", pattern: "If + presente, presente", examples: ["If I don't sleep, I feel terrible."] },
+                { label: "First", pattern: "If + presente, will + V", examples: ["If you study, you'll pass.", "Unless you hurry, you'll miss the bus."] },
+              ],
+            },
+            {
+              id: "b1-conditional-2",
+              title: "Segundo condicional (if + pasado, would)",
+              en: "Second Conditional & WOULD",
+              type: "grammar",
+              why: "Hipótesis irreales en presente/futuro. Aquí aprendes de verdad el modal WOULD, que reaparece en cortesía, reported speech y hábitos pasados.",
+              summary: "If + past simple, would + V. 'If I had a million dollars, I would travel the world.' 'If I were you, I'd...' (consejo). Would para cortesía (Would you mind...?), y preferencias (I'd rather...).",
+              structure: [
+                { label: "Afirmativo", pattern: "If + pasado, S + would + V", examples: ["If I lived in London, I would visit the museums."] },
+                { label: "Negativo / Pregunta", pattern: "wouldn't + V · What would you do if...?", examples: ["What would you do if you won the lottery?"] },
+              ],
+            },
+            {
+              id: "b1-modals-possibility",
+              title: "Could, may, might, must: posibilidad y deducción",
+              en: "Modals of possibility & deduction (present)",
+              type: "grammar",
+              why: "Expresar grados de certeza: must (seguro), may/might/could (posible), can't (imposible).",
+              summary: "It might rain. She must be at work (deducción). He can't be 50! Could para posibilidad, sugerencias (We could go out) y habilidad pasada (I could swim at 5).",
+              structure: [{ label: "Deducción", pattern: "S + must/might/can't + V", examples: ["That must be expensive.", "They might be late.", "It can't be true."] }],
+            },
+            {
+              id: "b1-used-to",
+              title: "Used to / would (hábitos pasados) vs be used to / get used to",
+              en: "Used to, would, be/get used to",
+              type: "grammar",
+              why: "Tres estructuras que se parecen pero significan cosas distintas; error clásico en exámenes.",
+              summary: "used to + V (hábito pasado que ya no: I used to smoke), would + V (hábitos repetidos pasados, no estados), be used to + -ing (estar acostumbrado), get used to + -ing (acostumbrarse).",
+              structure: [
+                { label: "used to", pattern: "S + used to + V · didn't use to · Did + S + use to?", examples: ["I used to play tennis.", "Did you use to live here?"] },
+                { label: "be/get used to", pattern: "S + be/get used to + V-ing/N", examples: ["I'm used to getting up early.", "You'll get used to the noise."] },
+              ],
+            },
+          ],
+        },
+        {
+          id: "b1-structures",
+          name: "Estructuras clave",
+          topics: [
+            {
+              id: "b1-verb-patterns",
+              title: "Gerundio vs infinitivo (verb patterns)",
+              en: "Gerunds & infinitives",
+              type: "grammar",
+              why: "Qué va después de un verbo: -ing o to + V. No hay regla mágica: se aprende por grupos y con mucho input.",
+              summary: "+ -ing: enjoy, finish, avoid, mind, suggest, keep. + to V: want, decide, hope, plan, need, learn. Ambos con cambio de significado: stop, remember, forget, try. Preposición + -ing. Verb + object + to (I want you to help).",
+              structure: [
+                { label: "-ing", pattern: "V + V-ing", examples: ["I enjoy cooking.", "She avoided answering."] },
+                { label: "to + V", pattern: "V + to V", examples: ["We decided to leave.", "He wants to learn."] },
+                { label: "Cambio de sentido", pattern: "stop/remember + -ing vs to", examples: ["I stopped smoking. (dejé)", "I stopped to smoke. (paré para)"] },
+              ],
+            },
+            {
+              id: "b1-relative-clauses",
+              title: "Oraciones de relativo: who, which, that, where, whose",
+              en: "Defining & non-defining relative clauses",
+              type: "grammar",
+              why: "Unir ideas y definir cosas sin cortar la frase. Marca la diferencia entre A2 y B1 al escribir.",
+              summary: "Defining (sin comas, that posible): The man who lives next door is a doctor. Non-defining (con comas, that NO): My brother, who lives in Cali, is a doctor. where (lugar), when (tiempo), whose (posesión). Omisión del pronombre objeto (The book (that) I read).",
+              structure: [
+                { label: "Defining", pattern: "N + who/which/that + V", examples: ["The phone that I bought is broken."] },
+                { label: "Non-defining", pattern: "N, + who/which..., + V", examples: ["Paris, which is the capital of France, is beautiful."] },
+              ],
+            },
+            {
+              id: "b1-passive",
+              title: "Voz pasiva (presente y pasado)",
+              en: "Passive voice",
+              type: "grammar",
+              why: "Noticias, ciencia, procesos: 'The bridge was built in 1900'. Reutiliza be + participio.",
+              summary: "be + V3. Present: is made. Past: was built. Present perfect: has been sold. Future: will be finished. by + agente (opcional).",
+              structure: [
+                { label: "Presente", pattern: "S + am/is/are + V3", examples: ["Coffee is grown in Colombia."] },
+                { label: "Pasado", pattern: "S + was/were + V3", examples: ["The letter was sent yesterday."] },
+                { label: "Pregunta", pattern: "Was/Were + S + V3?", examples: ["When was it built?"] },
+              ],
+            },
+            {
+              id: "b1-reported-speech",
+              title: "Estilo indirecto (reported speech) básico",
+              en: "Reported speech: statements, questions, commands",
+              type: "grammar",
+              why: "Contar lo que alguien dijo. Aplica el 'salto atrás' de tiempos que ya conoces (present → past, past → past perfect, will → would).",
+              summary: "He said (that) he was tired. She told me she had finished. Preguntas: asked if/whether + orden afirmativo; asked what/where... Órdenes: told me to / not to. Cambios de tiempo, pronombres y expresiones (today → that day).",
+              structure: [
+                { label: "Afirmación", pattern: "S + said (that) + S + V(pasado)", examples: ["\"I'm busy\" → She said she was busy."] },
+                { label: "Pregunta", pattern: "S + asked + if/wh- + S + V", examples: ["\"Where do you live?\" → He asked me where I lived."] },
+                { label: "Orden", pattern: "S + told + O + (not) to V", examples: ["\"Sit down\" → She told me to sit down."] },
+              ],
+            },
+            {
+              id: "b1-question-tags",
+              title: "Question tags e indirect questions",
+              en: "Question tags & indirect questions",
+              type: "grammar",
+              why: "Sonar natural y educado: 'You're Peter, aren't you?' y 'Could you tell me where the station is?'",
+              summary: "Tags: afirmativa → tag negativa y viceversa, con el mismo auxiliar (She can swim, can't she? / You didn't go, did you?). Indirect: Could you tell me / Do you know + orden afirmativo (Do you know where he lives?).",
+              structure: [
+                { label: "Tags", pattern: "oración, + aux + (not) + pronombre?", examples: ["It's cold, isn't it?", "They don't know, do they?"] },
+                { label: "Indirect", pattern: "Do you know + wh- + S + V?", examples: ["Do you know what time it is?"] },
+              ],
+            },
+            {
+              id: "b1-participle-adjectives",
+              title: "Adjetivos en -ed vs -ing (bored / boring)",
+              en: "Participle adjectives",
+              type: "grammar",
+              why: "Error clásico: 'I'm boring' significa 'soy aburrido'. -ed = cómo te sientes; -ing = cómo es la cosa.",
+              summary: "interested/interesting, bored/boring, excited/exciting, tired/tiring, confused/confusing, surprised/surprising, embarrassed/embarrassing.",
+              structure: [{ label: "Uso", pattern: "persona + -ed · cosa + -ing", examples: ["I'm bored because the film is boring.", "She was surprised by the surprising news."] }],
+            },
+            {
+              id: "b1-so-such-both",
+              title: "So / such, both / either / neither, too / enough",
+              en: "So & such, both/either/neither",
+              type: "grammar",
+              why: "Intensificar y comparar pares. Pequeñas estructuras con gran impacto en fluidez.",
+              summary: "so + adj (so hot), such + (a) + adj + N (such a hot day). both...and, either...or, neither...nor. So do I / Neither do I.",
+              structure: [{ label: "Uso", pattern: "so + adj · such + N", examples: ["It was so cold that we stayed in.", "It was such a nice day."] }],
+            },
+            {
+              id: "b1-articles-advanced",
+              title: "Artículos y determinantes avanzados",
+              en: "Articles: the, zero article, generalisations",
+              type: "grammar",
+              why: "Pulir errores frecuentes: 'the life is hard', 'I go to the school'.",
+              summary: "Sin artículo: generalizaciones (Life is hard), comidas, idiomas, países (excepto the USA, the UK), instituciones (go to school/church/bed). the con ríos, mares, superlativos, únicos, instrumentos musicales.",
+            },
+          ],
+        },
+        {
+          id: "b1-lexis",
+          name: "Léxico y conectores B1",
+          topics: [
+            {
+              id: "b1-phrasal-verbs",
+              title: "Phrasal verbs intermedios (separables / inseparables)",
+              en: "Intermediate phrasal verbs",
+              type: "vocab",
+              why: "Sin phrasal verbs no entiendes series ni conversaciones reales. Aprende la regla de separables (turn it on ✓ / turn on it ✗).",
+              summary: "Separables: turn on, pick up, put off, bring up, work out. Inseparables: look after, get over, run into, come across. Con partícula fija: get on with, look forward to, put up with.",
+            },
+            {
+              id: "b1-connectors",
+              title: "Conectores: although, however, despite, unless, in order to",
+              en: "Linking words for contrast, reason, purpose",
+              type: "grammar",
+              why: "Redactar y argumentar. Cada conector tiene su gramática (despite + N/-ing, although + oración).",
+              summary: "Contraste: although/even though + oración, despite/in spite of + N/-ing, however (con punto/;). Causa: because, since, as, due to. Propósito: to, in order to, so that. Condición: unless, as long as, provided that.",
+              structure: [{ label: "Uso", pattern: "although + S + V · despite + N/V-ing", examples: ["Although it was late, we went out.", "Despite the rain, we went out."] }],
+            },
+            {
+              id: "b1-collocations",
+              title: "Collocations y vocabulario por temas B1",
+              en: "Collocations: make/do/take/get/have + emotions, environment, money, relationships",
+              type: "vocab",
+              why: "Sonar natural es cuestión de collocations (make a decision, not do a decision). Y el vocabulario temático B1 abre la puerta a leer noticias reales.",
+              summary: "make (a mistake, friends, money), do (homework, exercise, the dishes), take (a photo, a break), get (a job, tired), have (fun, a shower). Temas: feelings, environment, education, money, relationships, crime, media.",
+            },
+          ],
+        },
+        {
+          id: "b1-skills",
+          name: "Habilidades B1",
+          topics: [
+            {
+              id: "b1-pronunciation",
+              title: "Connected speech, sentence stress e intonation",
+              en: "Connected speech & intonation",
+              type: "pronunciation",
+              why: "Para entender nativos hablando rápido: linking (an_apple), elision (nex(t) week), assimilation (don(t)cha).",
+              summary: "Linking de consonante + vocal, intrusive /r/ /j/ /w/, ritmo stress-timed, entonación ascendente/descendente en preguntas.",
+            },
+            {
+              id: "b1-writing",
+              title: "Writing: emails, historias cortas y párrafos de opinión",
+              en: "B1 writing: informal/formal emails, stories, opinion paragraphs",
+              type: "skills",
+              why: "Consolida gramática y conectores. Formato de email formal/informal es examinable (PET, IELTS).",
+              summary: "Estructura de párrafo (topic sentence + support), email informal vs formal, narrativa con tiempos del pasado, opinión con conectores.",
+            },
+            {
+              id: "b1-listening-reading",
+              title: "Podcasts, series y lectura graduada B1",
+              en: "Intermediate listening & reading",
+              type: "skills",
+              why: "Salto a contenido semi-auténtico: podcasts para estudiantes, series con subtítulos en inglés, lectores nivel 3-4 (Sherlock Holmes, Dracula adaptados).",
+              summary: "BBC 6 Minute English, podcasts intermedios, noticias nivel 3, lectores graduados nivel 3-4, TED-Ed.",
+            },
+            {
+              id: "b1-speaking",
+              title: "Speaking: opiniones, describir fotos, contar anécdotas",
+              en: "B1 speaking practice",
+              type: "skills",
+              why: "Output estructurado: dar opinión (I think... because...), acordar/desacordar, describir, comparar.",
+              summary: "Frases para opinar, turnarse, pedir aclaración; práctica con intercambio de idiomas y tutores de IA.",
+            },
+          ],
+        },
+      ],
+    },
+    /* ------------------------------------------------------------- */
+    {
+      id: "b2",
+      code: "B2",
+      name: "Intermedio alto",
+      subtitle: "Precisión: matices, hipótesis pasadas, registro",
+      color: "#dc2626",
+      intro:
+        "Objetivo B2: interactuar con nativos con fluidez, argumentar, entender textos complejos y series sin subtítulos. La gramática deja de ser 'nueva' y pasa a ser precisa.",
+      clusters: [
+        {
+          id: "b2-grammar",
+          name: "Gramática avanzada",
+          topics: [
+            {
+              id: "b2-conditional-3-mixed",
+              title: "Tercer condicional y condicionales mixtos",
+              en: "Third & Mixed Conditionals",
+              type: "grammar",
+              why: "Hipótesis sobre el pasado y sus consecuencias. Combina past perfect + would have + participio.",
+              summary: "Third: If + past perfect, would have + V3 (If I had studied, I would have passed). Mixed: If + past perfect, would + V (If I had studied medicine, I would be a doctor now) y viceversa.",
+              structure: [
+                { label: "Third", pattern: "If + had + V3, would have + V3", examples: ["If you had called me, I would have come."] },
+                { label: "Mixed", pattern: "If + had + V3, would + V (ahora)", examples: ["If I hadn't missed the flight, I'd be in Rome now."] },
+              ],
+            },
+            {
+              id: "b2-wish",
+              title: "Wish / if only / I'd rather / it's time",
+              en: "Wishes & regrets",
+              type: "grammar",
+              why: "Deseos, arrepentimientos y quejas. Mismo salto de tiempo que los condicionales.",
+              summary: "wish + past simple (presente: I wish I had more time), wish + past perfect (pasado: I wish I had studied), wish + would (queja: I wish you would stop). I'd rather you didn't. It's time we left.",
+              structure: [{ label: "Uso", pattern: "wish + pasado / past perfect / would", examples: ["I wish I were taller.", "If only I hadn't said that.", "I wish it would stop raining."] }],
+            },
+            {
+              id: "b2-passive-advanced",
+              title: "Pasiva avanzada: todos los tiempos, get, have something done",
+              en: "Advanced passive, causative have/get",
+              type: "grammar",
+              why: "Pasiva con modales y perfectos, reporting passive (It is said that...) y causativo (I had my car repaired).",
+              summary: "is being built, has been done, will have been finished, should be sent, might have been stolen. get + V3 (informal). have/get + object + V3 (causativo). It is thought that / He is believed to be.",
+              structure: [
+                { label: "Modal pasivo", pattern: "modal + be + V3", examples: ["The report must be submitted by Friday."] },
+                { label: "Causativo", pattern: "have/get + O + V3", examples: ["I had my hair cut.", "She got her phone fixed."] },
+              ],
+            },
+            {
+              id: "b2-reported-advanced",
+              title: "Reported speech avanzado: reporting verbs",
+              en: "Reporting verbs & patterns",
+              type: "grammar",
+              why: "Más natural que 'said': suggest, admit, deny, refuse, promise, warn, accuse... cada uno con su patrón.",
+              summary: "suggest + -ing / that; admit/deny + -ing; refuse/promise/offer + to V; warn/advise/remind + O + to V; accuse + O + of + -ing; apologise for + -ing.",
+              structure: [{ label: "Patrones", pattern: "V + -ing · V + to · V + O + to · V + O + prep + -ing", examples: ["He denied stealing it.", "She promised to call.", "They accused him of lying."] }],
+            },
+            {
+              id: "b2-modals-past",
+              title: "Modales en pasado: must have, can't have, should have, might have",
+              en: "Past modals of deduction & criticism",
+              type: "grammar",
+              why: "Deducir y criticar sobre el pasado: 'You should have told me', 'He must have forgotten'.",
+              summary: "modal + have + V3. must have (seguro que), can't/couldn't have (imposible que), may/might/could have (posible que), should have / shouldn't have (crítica), needn't have (no era necesario).",
+              structure: [{ label: "Uso", pattern: "S + modal + have + V3", examples: ["She must have missed the bus.", "You shouldn't have said that.", "They might have got lost."] }],
+            },
+            {
+              id: "b2-future-past",
+              title: "Futuro en el pasado y tiempos futuros compuestos",
+              en: "Future in the past, future perfect continuous",
+              type: "grammar",
+              why: "Narrar planes que no ocurrieron ('I was going to call you') y proyecciones complejas.",
+              summary: "was going to, would, was about to, was to. Future perfect continuous: will have been + V-ing (By 2030 I'll have been working here for 10 years).",
+            },
+            {
+              id: "b2-relative-advanced",
+              title: "Relativos avanzados: whom, preposiciones, reduced relative clauses",
+              en: "Advanced relative clauses & participle clauses",
+              type: "grammar",
+              why: "Precisión y concisión en escritura formal: 'the person to whom I spoke', 'people living in cities'.",
+              summary: "whom (formal, objeto), prep + which/whom (the house in which...), which referido a toda la oración, reduced clauses: -ing (people living here) / -ed (a car made in Japan). Participle clauses: Having finished, she left.",
+            },
+            {
+              id: "b2-cleft-emphasis",
+              title: "Énfasis: cleft sentences, inversión básica, do emphatic",
+              en: "Cleft sentences, inversion, emphasis",
+              type: "grammar",
+              why: "Sonar sofisticado: 'What I need is a break', 'It was John who called', 'Not only did he...'.",
+              summary: "What-clefts (What I love is...), It-clefts (It was in 2010 that...), all/the only thing, inversion con negativos (Never have I seen..., Not only..., No sooner... than), emphatic do (I do like it).",
+              structure: [
+                { label: "Cleft", pattern: "What + S + V + is/was + ...", examples: ["What matters is your effort."] },
+                { label: "Inversión", pattern: "Neg adv + aux + S + V", examples: ["Never have I felt so tired.", "Not only is it cheap, but it's also fast."] },
+              ],
+            },
+          ],
+        },
+        {
+          id: "b2-lexis",
+          name: "Léxico B2",
+          topics: [
+            {
+              id: "b2-word-formation",
+              title: "Formación de palabras: prefijos, sufijos, familias",
+              en: "Word formation",
+              type: "vocab",
+              why: "Multiplica tu vocabulario: de 'employ' sacas employee, employer, employment, unemployed. Parte fija del FCE/CAE.",
+              summary: "Prefijos negativos (un-, in-, im-, dis-, ir-), sufijos de sustantivo (-tion, -ness, -ment, -ity), adjetivo (-ful, -less, -able, -ive), adverbio (-ly), verbo (-ise, -en).",
+            },
+            {
+              id: "b2-phrasal-idioms",
+              title: "Phrasal verbs avanzados e idioms frecuentes",
+              en: "Advanced phrasal verbs & common idioms",
+              type: "vocab",
+              why: "Entender humor, series y conversación informal real.",
+              summary: "Phrasal de 3 partes (get away with, come up with, look down on), idioms de alta frecuencia (piece of cake, hit the road, on the fence, under the weather, break the ice).",
+            },
+            {
+              id: "b2-collocations-advanced",
+              title: "Collocations avanzadas y vocabulario temático B2",
+              en: "Advanced collocations; business, science, media, politics, culture",
+              type: "vocab",
+              why: "Para leer prensa y hablar de temas abstractos: economía, medioambiente, tecnología, sociedad.",
+              summary: "Adverb + adjective (highly unlikely, deeply concerned), verb + noun (raise awareness, pose a threat), temas: business, science & tech, media, politics, environment, arts.",
+            },
+            {
+              id: "b2-linking-advanced",
+              title: "Conectores avanzados y cohesión textual",
+              en: "Advanced linking & discourse markers",
+              type: "grammar",
+              why: "Ensayos y presentaciones coherentes: whereas, nevertheless, moreover, consequently, in contrast.",
+              summary: "Contraste (whereas, while, nevertheless, on the other hand), adición (moreover, furthermore, in addition), resultado (therefore, consequently, as a result), ejemplificación (for instance, namely), resumen (in conclusion, overall).",
+            },
+          ],
+        },
+        {
+          id: "b2-skills",
+          name: "Habilidades B2",
+          topics: [
+            {
+              id: "b2-pronunciation",
+              title: "Acentos, reducciones y fluidez",
+              en: "Accents (US/UK), reductions, fluency",
+              type: "pronunciation",
+              why: "Diferencias US/UK, reducciones extremas (whaddaya, gonna, lemme), y shadowing con nativos a velocidad real.",
+              summary: "Rhotic vs non-rhotic, flap T americano, vocales UK/US, entonación emocional, shadowing de podcasts y películas.",
+            },
+            {
+              id: "b2-writing",
+              title: "Writing: essays, reviews, reports, formal letters",
+              en: "B2 writing (FCE-style)",
+              type: "skills",
+              why: "Estructuras de ensayo argumentativo, reseña y reporte con registro adecuado.",
+              summary: "Essay for/against, opinion essay, review, report, formal letter/email of complaint or application. Planificación, párrafos, conectores, registro.",
+            },
+            {
+              id: "b2-listening-reading",
+              title: "Contenido auténtico: podcasts nativos, TED, prensa, novelas",
+              en: "Authentic listening & reading",
+              type: "skills",
+              why: "Adiós contenido adaptado: TED Talks, podcasts nativos, artículos de prensa, primeras novelas originales (Sherlock Holmes original, Animal Farm).",
+              summary: "TED, NPR, BBC, The Guardian, novelas cortas originales, series sin subtítulos en español.",
+            },
+            {
+              id: "b2-speaking",
+              title: "Speaking: debatir, argumentar, presentar",
+              en: "B2 speaking: discussion, argumentation, presentations",
+              type: "skills",
+              why: "Sostener una discusión de 5 minutos, defender una postura, hacer una presentación corta.",
+              summary: "Lenguaje para argumentar, conceder, refutar, especular; práctica con partners y tutores de IA; simulacros FCE speaking.",
+            },
+            {
+              id: "b2-exam",
+              title: "Preparación B2: First (FCE), IELTS 5.5-6.5, TOEFL",
+              en: "B2 exam preparation",
+              type: "test",
+              why: "Certificar B2 es útil para trabajo y universidad; los simulacros además son la mejor práctica integrada.",
+              summary: "Formato de Cambridge B2 First, IELTS Academic/General, TOEFL iBT. Sample papers, técnicas por parte, tiempos.",
+            },
+          ],
+        },
+      ],
+    },
+    /* ------------------------------------------------------------- */
+    {
+      id: "c1",
+      code: "C1",
+      name: "Avanzado",
+      subtitle: "Dominio: registro, matiz, retórica y lenguaje académico",
+      color: "#7c3aed",
+      intro:
+        "Objetivo C1: expresarte con fluidez y espontaneidad en contextos sociales, académicos y profesionales; entender textos largos y sentidos implícitos; usar el idioma con flexibilidad y precisión.",
+      clusters: [
+        {
+          id: "c1-grammar",
+          name: "Gramática de precisión",
+          topics: [
+            {
+              id: "c1-inversion",
+              title: "Inversión y estructuras enfáticas avanzadas",
+              en: "Advanced inversion & fronting",
+              type: "grammar",
+              why: "Registro formal y retórico: 'Seldom does one see...', 'Had I known...', 'So beautiful was the view that...'.",
+              summary: "Inversión tras adverbios negativos/restrictivos (rarely, seldom, little, hardly...when, only then, under no circumstances), inversión condicional (Had I known / Should you need / Were it not for), fronting (Such was the noise that...).",
+              structure: [{ label: "Uso", pattern: "Neg/restr adv + aux + S + V", examples: ["Little did she know what awaited her.", "Had I known, I would have come.", "Only after the meeting did I understand."] }],
+            },
+            {
+              id: "c1-subjunctive",
+              title: "Subjuntivo y estructuras formales",
+              en: "Subjunctive, formal structures",
+              type: "grammar",
+              why: "Inglés formal escrito: 'It is essential that he be informed', 'I suggest that she leave', 'as it were', 'be that as it may'.",
+              summary: "Mandative subjunctive tras suggest/demand/insist/recommend/essential/vital (that + S + base verb), were-subjunctive (if I were / as if it were), expresiones fijas (God save the King, long live, so be it).",
+            },
+            {
+              id: "c1-conditionals-advanced",
+              title: "Condicionales avanzados: were to, should, but for, otherwise, provided",
+              en: "Advanced conditionals & alternatives to if",
+              type: "grammar",
+              why: "Formalidad y variedad: 'Were you to accept...', 'But for your help...', 'Supposing that...'.",
+              summary: "If + were to, if + should (formal), if + will/would (cortesía), but for / without + N, otherwise, supposing, on condition that, provided/providing, even if, whether...or not, implied conditionals.",
+            },
+            {
+              id: "c1-ellipsis",
+              title: "Elipsis, sustitución y referencia",
+              en: "Ellipsis & substitution",
+              type: "grammar",
+              why: "Los nativos omiten mucho: 'Want some?', 'I hope so', 'so do I', 'if not, ...'. Entenderlo y usarlo es señal de C1.",
+              summary: "Omisión de sujeto/auxiliar en informal, so/not tras verbos de opinión (I think so / I hope not), do so, one/ones, reducción tras and/but (She can sing and dance), ellipsis en comparativas.",
+            },
+            {
+              id: "c1-modals-nuance",
+              title: "Modales y matices: will/would de hábito, shall, ought to, dare, need",
+              en: "Advanced modal nuances",
+              type: "grammar",
+              why: "Los modales tienen usos secundarios: will para hábitos molestos (He will keep interrupting), would para hábitos pasados, shall en ofertas formales, be bound to, be supposed to.",
+              summary: "will/would (hábito, crítica), shall (ofertas, formal), ought to, need/dare como modales, be to + V (órdenes formales), be bound to, be liable to, be supposed to, had better.",
+            },
+            {
+              id: "c1-discourse",
+              title: "Discourse markers, hedging y cohesión avanzada",
+              en: "Discourse markers, hedging & stance",
+              type: "grammar",
+              why: "Gestionar la conversación y suavizar afirmaciones: 'to be honest', 'admittedly', 'arguably', 'it would seem that'.",
+              summary: "Marcadores conversacionales (mind you, as a matter of fact, anyway), hedging académico (arguably, it appears, to some extent, tends to), stance adverbs (frankly, presumably, undoubtedly), cohesión con referencia y sustitución.",
+            },
+          ],
+        },
+        {
+          id: "c1-lexis",
+          name: "Léxico y registro C1",
+          topics: [
+            {
+              id: "c1-register",
+              title: "Registro: formal vs informal, inglés académico y profesional",
+              en: "Register & academic/professional English",
+              type: "vocab",
+              why: "Cambiar de estilo según el contexto: mismo mensaje en email formal, chat con amigos, presentación.",
+              summary: "Latinate vs phrasal (purchase/buy, investigate/look into), nominalización académica, pasiva impersonal, Academic Word List, lenguaje de reuniones y negociación.",
+            },
+            {
+              id: "c1-nuance",
+              title: "Vocabulario de matiz: connotación, sinónimos precisos, collocations C1",
+              en: "Nuance, connotation, near-synonyms",
+              type: "vocab",
+              why: "slim/thin/skinny, childish/childlike, cheap/inexpensive: la diferencia entre B2 y C1 es elegir la palabra exacta.",
+              summary: "Connotación positiva/negativa, intensidad (annoyed → furious), gradación, collocations fuertes (bitterly disappointed, utterly ridiculous), binomials (safe and sound).",
+            },
+            {
+              id: "c1-idioms-slang",
+              title: "Idioms, slang, humor y referencias culturales",
+              en: "Idioms, slang, humour & cultural references",
+              type: "vocab",
+              why: "Entender comedia, sarcasmo, memes y conversaciones entre nativos.",
+              summary: "Idiomatic expressions por contexto, slang US/UK actual, understatement británico, sarcasmo e ironía, referencias a cultura pop y política.",
+            },
+            {
+              id: "c1-word-formation-advanced",
+              title: "Word formation avanzado y vocabulario por campos",
+              en: "Advanced word formation & semantic fields",
+              type: "vocab",
+              why: "Para el CAE y para leer ensayos: compound adjectives, conversión, prefijos técnicos.",
+              summary: "Compound adjectives (well-established, time-consuming), conversión N↔V, prefijos (counter-, pseudo-, hyper-), campos semánticos: law, economics, psychology, science, arts.",
+            },
+          ],
+        },
+        {
+          id: "c1-skills",
+          name: "Habilidades C1",
+          topics: [
+            {
+              id: "c1-reading",
+              title: "Lectura: literatura original, ensayo y periodismo largo",
+              en: "Reading: novels, essays, long-form journalism",
+              type: "skills",
+              why: "Sherlock Holmes completo, Orwell, Austen, ensayos de The Atlantic, The New Yorker, The Economist.",
+              summary: "Novelas y relatos originales en dominio público (Project Gutenberg), periodismo largo, ensayos, lectura crítica e inferencia.",
+            },
+            {
+              id: "c1-listening",
+              title: "Listening: debates, conferencias, cine sin subtítulos, acentos",
+              en: "Advanced listening: lectures, debates, film, accents",
+              type: "skills",
+              why: "Entender ironía, acentos regionales, discurso rápido y superpuesto.",
+              summary: "Conferencias universitarias, debates parlamentarios, comedia stand-up, cine sin subtítulos, acentos escocés, irlandés, australiano, sureño US.",
+            },
+            {
+              id: "c1-speaking",
+              title: "Speaking: fluidez, argumentación, presentaciones y negociación",
+              en: "Advanced speaking",
+              type: "skills",
+              why: "Hablar 2-3 minutos sin pausas sobre un tema abstracto, moderar, persuadir, negociar.",
+              summary: "Técnicas de presentación, storytelling, lenguaje de negociación, manejo de turnos, respuesta a preguntas difíciles.",
+            },
+            {
+              id: "c1-writing",
+              title: "Writing: ensayo académico, propuesta, reseña crítica",
+              en: "Academic & professional writing",
+              type: "skills",
+              why: "Estructura de ensayo académico, citas, cohesión, propuestas y reportes profesionales.",
+              summary: "Essay, proposal, report, review (CAE), academic writing (IELTS Task 2, EAP), estilo y precisión.",
+            },
+            {
+              id: "c1-exam",
+              title: "Certificación C1: Advanced (CAE), IELTS 7+, TOEFL 95+",
+              en: "C1 exam preparation",
+              type: "test",
+              why: "Meta final del roadmap: certificar C1 con sample papers oficiales y simulacros cronometrados.",
+              summary: "Formato C1 Advanced (Reading & Use of English, Writing, Listening, Speaking), IELTS band 7-8, TOEFL iBT 95+, estrategias por parte.",
+            },
+          ],
+        },
+      ],
+    },
+  ],
+};

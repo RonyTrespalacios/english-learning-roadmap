@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>English Roadmap — de A1 a C1</title>
+  <meta name="description" content="Roadmap interactivo para aprender inglés desde cero hasta C1, con orden analítico-práctico y recursos gratuitos de terceros por tema." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗺️</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <div class="brand">
+        <span class="brand-logo">🗺️</span>
+        <div>
+          <h1>English Roadmap</h1>
+          <p class="tagline">De cero a C1 con orden analítico-práctico. Cada caja apunta a recursos gratuitos de terceros.</p>
+        </div>
+      </div>
+      <div class="header-tools">
+        <label class="search">
+          <span class="search-icon" aria-hidden="true">🔍</span>
+          <input id="search" type="search" placeholder="Buscar tema (ej. present perfect, at/on/in, would…)" autocomplete="off" />
+        </label>
+        <button id="btn-export" class="btn ghost" title="Descargar tu progreso como JSON">⬇ Exportar</button>
+        <label class="btn ghost" title="Restaurar progreso desde un JSON">⬆ Importar<input id="file-import" type="file" accept="application/json" hidden /></label>
+        <button id="btn-reset" class="btn danger" title="Borrar todo el progreso guardado en este navegador">Reiniciar</button>
+      </div>
+    </div>
+    <div class="wrap progress-row">
+      <div class="progress-global">
+        <div class="progress-bar"><div id="global-bar" class="progress-fill"></div></div>
+        <span id="global-label" class="progress-label">0 / 0 temas</span>
+      </div>
+      <nav id="level-nav" class="level-nav" aria-label="Niveles"></nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="howto">
+      <details open>
+        <summary><strong>Cómo usar este roadmap</strong></summary>
+        <div class="howto-grid">
+          <div><b>1. Sigue las flechas.</b> El orden no es el de los libros: primero la estructura madre <em>S + AUX + V + C</em>, luego cada tiempo verbal como una variación de ella.</div>
+          <div><b>2. Haz clic en una caja.</b> Verás una explicación corta con la estructura (afirmativo, negativo, pregunta) y tarjetas con recursos: teoría, videos, listening, canciones, lecturas y tests.</div>
+          <div><b>3. Marca lo que termines.</b> Cada tarjeta tiene un checkbox. Cuando marques todas las de un tema, la caja aparecerá tachada con ✓. El progreso se guarda en tu navegador.</div>
+          <div><b>4. Diagnóstico.</b> Si ya sabes algo de inglés, haz el test de nivel del bloque Fundamentos y entra directo en tu nivel.</div>
+        </div>
+      </details>
+      <div class="legend" id="legend"></div>
+    </section>
+
+    <section id="roadmap" class="roadmap" aria-label="Mapa de estudio">
+      <svg id="connectors" class="connectors" aria-hidden="true"></svg>
+      <div id="roadmap-body" class="roadmap-body"></div>
+    </section>
+
+    <footer class="site-footer">
+      <p>Hecho para estudiar con método: input comprensible, repetición espaciada y output temprano. Todos los recursos enlazados pertenecen a sus autores.</p>
+    </footer>
+  </main>
+
+  <!-- Modal -->
+  <div id="modal" class="modal" hidden>
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="modal-close" data-close aria-label="Cerrar">✕</button>
+      <div id="modal-content" class="modal-content"></div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" hidden></div>
+
+  <!-- Datos -->
+  <script src="data/curriculum.js"></script>
+  <script src="data/resources/r01-foundations.js"></script>
+  <script src="data/resources/r02-a1-grammar.js"></script>
+  <script src="data/resources/r03-vocab-a1-a2.js"></script>
+  <script src="data/resources/r04-a2-grammar.js"></script>
+  <script src="data/resources/r05-b1-tenses.js"></script>
+  <script src="data/resources/r06-b1-structures.js"></script>
+  <script src="data/resources/r07-b2-grammar.js"></script>
+  <script src="data/resources/r08-b2-skills-c1-grammar.js"></script>
+  <script src="data/resources/r09-c1-lexis-skills.js"></script>
+  <!-- App -->
+  <script src="js/app.js"></script>
+</body>
+</html>
